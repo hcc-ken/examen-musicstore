@@ -1,0 +1,3 @@
+Los símbolos - y + con métodos privados(-) o públicos(+)
+Disponible es booleana, puede ser true o false
+El métodos toString() es un método que devuelve el objeto en forma de cadena.
