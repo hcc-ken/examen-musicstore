@@ -1,4 +1,6 @@
-﻿public class Album
+﻿using MySql.Data.MySqlClient;
+
+public class Album
 {
 	string titulo;
 	string artista;
@@ -18,29 +20,14 @@
 		return titulo;
 	}
 
-	public void setTitulo(string titulo)
-	{
-		this.titulo = titulo;
-	}
-
 	public string getArtista()
 	{
 		return artista;
 	}
 
-	public void setArtista(string artista)
-	{
-		this.artista = artista;
-	}
-
 	public int getAnyo()
 	{
 		return anyo;
-	}
-
-	public void setAnyo(int anyo)
-	{
-		this.anyo = anyo;
 	}
 
 	public bool isDisponible()
@@ -83,5 +70,27 @@
 			Console.WriteLine("Fichero guardado correctamente.");
 		}
 		GuardarAlbumes(albums);
+	}
+
+public class GestorBD
+{
+	private MySqlConnection conexion;
+
+	public GestorBD()
+	{
+		MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+		builder.Server = "localhost";
+		builder.UserID = "root";
+		builder.Password = "";
+		builder.Database = "musicstore";
+
+		conexion = new MySqlConnection(builder.ConnectionString);
+	}
+	public void InsertarAlbum(Album a)
+	{
+
+		string sql = "INSERT INTO album (titulo, artista, anio, disponible)";
+		MySqlCommand cmd = new MySqlCommand(sql, conexion);
+
 	}
 }
