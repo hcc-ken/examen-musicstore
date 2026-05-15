@@ -87,10 +87,8 @@ public class Album
 		}
 		public void InsertarAlbum(Album a)
 		{
-
 			string sql = "INSERT INTO album (titulo, artista, anio, disponible)";
 			MySqlCommand cmd = new MySqlCommand(sql, conexion);
-
 		}
 	}
 }
