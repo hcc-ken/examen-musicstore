@@ -50,7 +50,7 @@ public class Album
 		{
 			Console.WriteLine(album.toString());
 
-			if(album.getArtista().Contains("Metallica"))
+			if (album.getArtista().Contains("Metallica"))
 			{
 				Console.WriteLine("El álbum de Metallica está disponible");
 			}
@@ -64,33 +64,33 @@ public class Album
 			{
 				foreach (Album album in albums)
 				{
-				writer.WriteLine(album.getTitulo());
+					writer.WriteLine(album.getTitulo());
 				}
 			}
 			Console.WriteLine("Fichero guardado correctamente.");
 		}
 		GuardarAlbumes(albums);
 	}
-
-public class GestorBD
-{
-	private MySqlConnection conexion;
-
-	public GestorBD()
+	public class GestorBD
 	{
-		MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-		builder.Server = "localhost";
-		builder.UserID = "root";
-		builder.Password = "";
-		builder.Database = "musicstore";
+		private MySqlConnection conexion;
 
-		conexion = new MySqlConnection(builder.ConnectionString);
-	}
-	public void InsertarAlbum(Album a)
-	{
+		public GestorBD()
+		{
+			MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+			builder.Server = "localhost";
+			builder.UserID = "root";
+			builder.Password = "";
+			builder.Database = "musicstore";
 
-		string sql = "INSERT INTO album (titulo, artista, anio, disponible)";
-		MySqlCommand cmd = new MySqlCommand(sql, conexion);
+			conexion = new MySqlConnection(builder.ConnectionString);
+		}
+		public void InsertarAlbum(Album a)
+		{
 
+			string sql = "INSERT INTO album (titulo, artista, anio, disponible)";
+			MySqlCommand cmd = new MySqlCommand(sql, conexion);
+
+		}
 	}
 }
