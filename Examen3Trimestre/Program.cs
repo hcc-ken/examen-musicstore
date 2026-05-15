@@ -64,7 +64,8 @@ public class Album
 			{
 				foreach (Album album in albums)
 				{
-					writer.WriteLine(album.getTitulo());
+					string linea = $"{album.getTitulo()};{album.getArtista()};{album.getAnyo()};{album.isDisponible()}";
+					writer.WriteLine(linea);
 				}
 			}
 			Console.WriteLine("Fichero guardado correctamente.");
